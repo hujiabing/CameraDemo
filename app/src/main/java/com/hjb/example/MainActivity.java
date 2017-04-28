@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                     if (permissionUtil.verifyPermissions(MainActivity.this, permissionUtil.getCameraPermissions())) {
                          CameraUtils.takePhoto(MainActivity.this, BuildConfig.APPLICATION_ID);
                     } else{
-                        ActivityCompat.requestPermissions(MainActivity.this, permissionUtil.getCameraPermissions(), CameraUtils.SELECT_PICTURE_CAMARA);
+                        ActivityCompat.requestPermissions(MainActivity.this, permissionUtil.getCameraPermissions(), CameraUtils.TAKE_PICTURE);
                     }
                 } else
                      CameraUtils.takePhoto(MainActivity.this, BuildConfig.APPLICATION_ID);
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == CameraUtils.SELECT_PICTURE_CAMARA && resultCode == Activity.RESULT_OK) {
+            if (requestCode == CameraUtils.TAKE_PICTURE && resultCode == Activity.RESULT_OK) {
                 ImageUtil.LoadPicture(CameraUtils.photoPath, imageView);
             }
         }

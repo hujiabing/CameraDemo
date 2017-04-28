@@ -19,7 +19,7 @@ import java.util.Date;
  */
 
 public class CameraUtils {
-    public static final int SELECT_PICTURE_CAMARA = 101;
+    public static final int TAKE_PICTURE = 101;
     public static String photoPath;
 
     public static void takePhoto(Activity ac, String appID) {
@@ -41,7 +41,7 @@ public class CameraUtils {
                 }
                 takePictureIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                ac.startActivityForResult(takePictureIntent, SELECT_PICTURE_CAMARA);
+                ac.startActivityForResult(takePictureIntent, TAKE_PICTURE);
             }
         }
         // Save a file: path for use with ACTION_VIEW intents
