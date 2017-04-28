@@ -20,8 +20,9 @@ import java.util.Date;
 
 public class CameraUtils {
     public static final int SELECT_PICTURE_CAMARA = 101;
+    public static String photoPath;
 
-    public static String takePhoto(Activity ac,String appID) {
+    public static void takePhoto(Activity ac, String appID) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File photoFile = null;
         if (takePictureIntent.resolveActivity(ac.getPackageManager()) != null) {
@@ -43,15 +44,13 @@ public class CameraUtils {
                 ac.startActivityForResult(takePictureIntent, SELECT_PICTURE_CAMARA);
             }
         }
-        String mCurrentPhotoPath;
         // Save a file: path for use with ACTION_VIEW intents
         if (Build.VERSION.SDK_INT >= 24) {
-            mCurrentPhotoPath = String.valueOf(FileProvider.getUriForFile(ac,
+            photoPath = String.valueOf(FileProvider.getUriForFile(ac,
                     appID + ".provider", photoFile));
         } else {
-            mCurrentPhotoPath = String.valueOf(Uri.fromFile(photoFile));
+            photoPath = String.valueOf(Uri.fromFile(photoFile));
         }
-        return mCurrentPhotoPath;
     }
 
     private static File createImageFile(Activity ac) throws IOException {
