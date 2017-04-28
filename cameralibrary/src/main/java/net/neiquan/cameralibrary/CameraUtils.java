@@ -21,6 +21,7 @@ import java.util.Date;
 public class CameraUtils {
     public static final int TAKE_PICTURE = 101;
     public static String photoPath;
+    public static final int LOCAL_PICTURE = 102;
 
     public static void takePhoto(Activity ac, String appID) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
